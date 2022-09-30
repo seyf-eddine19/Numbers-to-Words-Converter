@@ -277,7 +277,7 @@ body.dark-theme{
     <header class="header" id="header">
         <nav class="nav">
             <a title="My Logo" href="#" class="nav_logo">
-                <img max-width="100%" height="auto" class="my-logo" id="my-logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRknBGBH59LqTyRKom0uvo_o1or_Iq99vMx2l_wG57oKtmOhQP1tyxLrTQSCl7W9NRZa-GGHmmkJLPHV-V6Kd_OrNaiWCVYpgUZ91psnJNthERJc7pvP7aUOv4Lq2bY6Tis4TINe0cpo6th8BGIME4WUmYG_m_gH2F09MTKGo5sghyAXvkvGk5Fw/s1600/seyfeddine-logo-2.webp" title="My Logo" alt="My Logo">
+                <img max-width="100%" height="auto" class="my-logo" id="my-logo" src="assets/img/seyfeddine-logo-1.webp" title="My Logo" alt="My Logo">
                 Seyf Eddine
             </a>
             <li class="nav_item"><i class='bx bx-moon theme_button' id="theme-button"></i></li>
@@ -375,27 +375,6 @@ body.dark-theme{
         const selectedTheme = localStorage.getItem('selected-theme');
         const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
 
-
-if(selectedTheme === 'dark'){
-  document.body.classList.toggle('dark-theme');
-  themeButton.classList.add('bx-sun');
-  themeButton.classList.remove('bx-moon');
-  myLogo.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRknBGBH59LqTyRKom0uvo_o1or_Iq99vMx2l_wG57oKtmOhQP1tyxLrTQSCl7W9NRZa-GGHmmkJLPHV-V6Kd_OrNaiWCVYpgUZ91psnJNthERJc7pvP7aUOv4Lq2bY6Tis4TINe0cpo6th8BGIME4WUmYG_m_gH2F09MTKGo5sghyAXvkvGk5Fw/s1600/seyfeddine-logo-2.webp";
-}
-localStorage.setItem('selected-theme', getCurrentTheme());
-
-themeButton.onclick = function(){
-  if(document.body.classList.contains(darkTheme)){
-    myLogo.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRknBGBH59LqTyRKom0uvo_o1or_Iq99vMx2l_wG57oKtmOhQP1tyxLrTQSCl7W9NRZa-GGHmmkJLPHV-V6Kd_OrNaiWCVYpgUZ91psnJNthERJc7pvP7aUOv4Lq2bY6Tis4TINe0cpo6th8BGIME4WUmYG_m_gH2F09MTKGo5sghyAXvkvGk5Fw/s1600/seyfeddine-logo-1.webp";
-  } else {
-    myLogo.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiR3f8rumCEwaNki733oYuUK23wGJn7zsdz564Yd-PizsKhJPtvSMscH6OfWGiJIqxSWa-URCmsK-cqbc8WsoamzJKF6gh-_7I8waM4UkFiO-zrE5fss2ormIjjJctFukacU37Mjmf0No8fqeaGUWK2qAXStDyRIBpjaMF7MJCvbCAJ0FjlT4tzpg/s1600/seyfeddine-logo-2.webp";
-  }
-  document.body.classList.toggle('dark-theme');
-  themeButton.classList.toggle('bx-sun');
-  themeButton.classList.toggle('bx-moon');
-  localStorage.setItem('selected-theme', getCurrentTheme());
-}
-/*
         if(selectedTheme === 'dark'){
           document.body.classList.toggle('dark-theme');
           themeButton.classList.add('bx-sun');
@@ -405,17 +384,17 @@ themeButton.onclick = function(){
         localStorage.setItem('selected-theme', getCurrentTheme());
 
         themeButton.onclick = function(){
-          document.body.classList.toggle('dark-theme');
-          themeButton.classList.toggle('bx-sun');
-          themeButton.classList.toggle('bx-moon');
           if(document.body.classList.contains(darkTheme)){
             myLogo.src = "assets/img/seyfeddine-logo-1.webp";
           } else {
             myLogo.src = "assets/img/seyfeddine-logo-2.webp";
           }
+          document.body.classList.toggle('dark-theme');
+          themeButton.classList.toggle('bx-sun');
+          themeButton.classList.toggle('bx-moon');
           localStorage.setItem('selected-theme', getCurrentTheme());
         }
-        -----------------------------------*/
+        /*-----------------------------------*/
 /*--------------------------- SWITCH NUMBERS ----------------------------*/
 function numberSwitch(number) {
     let n;
