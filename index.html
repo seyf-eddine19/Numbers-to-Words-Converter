@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio Website">
+    <meta name="keywords" content="Portfolio, HTML, CSS, JavaScript, Website">
+    <meta name="author" content="Seyf Eddine Abdellaoui">
+
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://kit.fontawesome.com/81e0548c46.js" crossorigin="anonymous"></script>
+
+    <style type="text/css">
+ /*
+-----------------------------------------------
+Name:     Seyf Eddine Abdellaoui
+Date:     04 juillet 2021
+-----------------------------------------------
+*/ 
+
+/*===== GOOGLE FONTS =====*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+/*===== VARIABLES CSS =====*/
+:root {
+
+  /*========== Colors ==========*/
+  --first-color: #4070F4;
+  --first-color-alt: #273971;
+  --second-color:#0E2431;
+
+  --title-color: #393939;
+  --text-color: #707070;
+  --text-color-light: #e0e0e0;
+  --body-color: #FBFEFD;
+  --container-color: #EEE;
+  --container-color-light: #FFF;
+  --shado-color: 0 4px 25px rgba(14,36,49,.15);
+
+  /*========== Font and typography ==========*/
+  --body-font: 'Poppins', sans-serif;
+  --big-font-size: 3rem;
+  --h1-font-size: 2.5rem;
+  --h2-font-size: 2rem;
+  --h3-font-size: 1.5rem;
+  --normal-font-size: 1rem;
+  --small-font-size: .875rem;
+  --smaller-font-size: .813rem;
+
+  /*========== Font weight ==========*/
+  --font-medium: 500;
+  --font-semi-bold: 600;
+
+  /*========== Margenes ==========*/
+  --mb-1: .5rem;
+  --mb-2: 1rem;
+  --mb-3: 1.5rem;
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  /*========== z index ==========*/
+  --z-back: -10;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+
+  /*========== skills percentages ==========*/
+  --percentage: 0
+}
+@media screen and (max-width: 768px){
+  :root{
+    --big-font-size: 1.5rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: .813rem;
+    --smaller-font-size: .75rem;
+  }
+}
+/*========== BASE ==========*/
+*, ::before, ::after{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  scroll-behavior: smooth;
+}
+body{
+  background-color: var(--body-color);
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  color: var(--text-color);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+ul{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+img, video{
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/*========== Variables Dark theme ==========*/
+body.dark-theme{
+  --first-color-alt: #fff;
+  --title-color: #F1F3F2;
+  --text-color: #e0e0e0;
+  --body-color: #000;
+  --container-color: #27302C;
+  --container-color-light: #223038;
+  --shado-color: 0 2px 25px rgb(224 224 224 / 27%);
+}
+/*========== Dark/Light Button ==========*/
+.theme_button {
+  font-size: 22px;
+  cursor: pointer;
+}  
+/*========== CLASS CSS ==========*/
+/*===== LAYOUT =====*/
+.header {
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background-color: var(--body-color);
+  box-shadow: 0 -10px 20px #707070cf;
+  z-index: var(--z-fixed);
+}
+/*===== NAV =====*/
+.nav {
+  width: calc(100% - 2rem);
+  max-width: 1024px;
+  height: 4rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi-bold);
+}
+.nav_logo {
+  display: inline-flex;
+  align-items: center;
+  color: var(--first-color-alt);
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+}
+.my-logo {
+  height: 3rem;
+  margin: auto var(--mb-1);
+}
+.nav_item {
+  display: inline-block;
+  margin-left: var(--mb-2);
+}
+.theme_button {
+  display: block;
+  padding: .8rem;
+  border-radius: 3rem;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  color: var(--second-color);
+  background-color: #f1f3f2;
+}
+
+.nav_logo:hover, nav.bx:hover, .theme_button:hover {
+  color: var(--first-color);
+}
+
+/* Active menu */
+.active::after {
+  content: '';
+  display: block;
+  margin: auto;
+  width: 100%;
+  height: 2px;
+  background: var(--first-color);
+  position: relative;
+  top: 0.125rem;
+  transition: 0.5s;
+} 
+/*========== SECTIONS ==========*/
+.section {
+  width: 100%;
+  margin: auto;
+  padding-top: 4rem;
+  padding-bottom: 3rem;
+}
+.title {
+  color: var(--title-color);
+  padding: var(--mb-4);
+  text-align: center;
+}
+.text {
+  text-align: center;
+  padding: var(--mb-2) 0;
+}
+.container {
+  max-width: 512px;
+  margin: 0 auto;
+  padding: 0 var(--mb-2);
+}
+/*========== BUTTONS ==========*/
+.button {
+  padding: .75rem 2.5rem;
+  margin: 10px;
+  display: inline-block;
+  background-color: var(--second-color);
+  font-weight: var(--font-semi-bold);
+  color: #fff;
+  border: 1px solid;
+}
+.button:hover {
+  background: #fff;
+  color: var(--second-color);
+  border: 1px solid;
+}       
+#input-number {
+    display: block;
+    max-width: 350px;
+    width: -webkit-fill-available;
+    margin: 1rem auto;
+    padding: 1rem;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+.output-div div {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.output-div textarea {
+    padding: .4rem;
+    font-size: 14px;
+    width: 100%;
+    font-family: var(--body-font);
+    text-align: center;
+}
+/*------------------------------------------------------------------------------------------------------*/   
+.footer {
+  background-color: var(--second-color);
+  color: #fff;
+  text-align: center;
+  font-weight: var(--font-semi-bold);
+  padding: 2rem 0;
+}
+
+.footer_title {
+  font-size: 1.5rem;
+  margin-bottom: var(--mb-3);
+}
+
+.footer_social {
+  margin-bottom: var(--mb-4);
+}
+
+.footer_icon {
+  font-size: 1.5rem;
+  color: #fff;
+  margin: 0 var(--mb-2);
+}
+
+/*------------------------------------------------------------------------------------------------------*/
+
+    </style>
+    <link rel="shortcut icon" href="assets/img/seyfeddine-logo-1.webp" type="image/webp">
+    <title>Seyf Eddine Portfolio</title>
+</head>
+<body> 
+    <!--===== HEADER =====-->
+    <header class="header" id="header">
+        <nav class="nav">
+            <a title="My Logo" href="#" class="nav_logo">
+                <img max-width="100%" height="auto" class="my-logo" id="my-logo" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRknBGBH59LqTyRKom0uvo_o1or_Iq99vMx2l_wG57oKtmOhQP1tyxLrTQSCl7W9NRZa-GGHmmkJLPHV-V6Kd_OrNaiWCVYpgUZ91psnJNthERJc7pvP7aUOv4Lq2bY6Tis4TINe0cpo6th8BGIME4WUmYG_m_gH2F09MTKGo5sghyAXvkvGk5Fw/s1600/seyfeddine-logo-2.webp" title="My Logo" alt="My Logo">
+                Seyf Eddine
+            </a>
+            <li class="nav_item"><i class='bx bx-moon theme_button' id="theme-button"></i></li>
+        </nav>
+    </header>
+
+    <!--===== MAIN =====-->
+    <main class="main">
+        <!--===== HOME =====-->
+        <section class="section" id="">
+            <div class="container">
+                <h1 class="title">Numbers to Words Converter</h1>
+                <p class="text">You can use this online converter to convert any numbers or currencies into words in English, French and Arabic.</p>
+                <div class="input-div">
+                    <p class="text">Enter the values below.</p>
+                    <input type="text" name="number" id="input-number" maxlength="27" placeholder="Number">
+                </div>
+                <div class="output-div">
+                    <p class="text">Number in letters in English</p>
+                    <div id="en-lang">
+                        <textarea type="text" name="output" rows="1"></textarea>
+                        <button class="button copy-btn">Copy</button>
+                    </div>
+                    <p class="text">Number in letters in French</p>
+                    <div id="fr-lang">
+                        <textarea type="text" name="output" rows="1"></textarea>
+                        <button class="button copy-btn">Copy</button>
+                    </div>
+                    <p class="text">Number in letters in Arabic</p>
+                    <div id="ar-lang">
+                        <textarea type="text" name="output" rows="1"></textarea>
+                        <button class="button copy-btn">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <hr>
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <div class="footer_icon">
+            <a title="linkedin Link" href="https://www.linkedin.com/in/seyfeddine-abdellaoui" target="_blank" class="footer_icon"><i class='bx bxl-linkedin'></i></a>
+            <a title="behance Link" href="https://www.behance.net/seyfeddineAbdellaoui" target="_blank" class="footer_icon"><i class='bx bxl-behance'></i></a>
+            <a title="github Link" href="https://github.com/seyf-eddine19" target="_blank" class="footer_icon"><i class='bx bxl-github'></i></a>
+        </div>
+        <p>Created by Seyfeddine &#169; 2022</p>
+    </footer>
+
+    <!--===== MAIN JS =====-->    
+    <script type="text/javascript">
+        var inNumber = document.querySelector('#input-number');
+        var output = document.querySelectorAll('[name="output"]');
+        var copybtn = document.querySelectorAll('.copy-btn');
+        /*-----------------------------------*/
+        /*--------- CONVERT NUMBERS ---------*/ 
+        inNumber.addEventListener('keyup', (e) => showResult(e));
+        inNumber.addEventListener('change', (e) => showResult(e));
+        function showResult(e) {
+            var i = 0, number = e.target.value, myNumber = NumberToLetter(number);
+            let m = [];
+            m[0] = myNumber.en; m[1] = myNumber.fr; m[2] = myNumber.ar;
+            if (number.toString().replace(/ /gi, "").length > 27) {
+                cout = "Capacity Overflow";
+                output.forEach((out) => { out.value = '' });
+                e.target.value = "";  
+                alert(cout);
+            }
+            else output.forEach((out) => { 
+                out.value = m[i]; i++;
+                var txt = out.value, arraytxt = txt.split(''), cols = out.clientWidth;
+                var rows = parseInt(arraytxt.length*13.5/cols+0.5); 
+                out.rows = rows;
+            });
+        }
+        /*-----------------------------------*/
+        /*------------ COPY TEXT ------------*/ 
+        copybtn.forEach((btn) => { 
+            btn.addEventListener('click', (e) => {
+                var copyText = e.target.parentElement.querySelector('[name="output"]');
+                /* Select the text field */
+                copyText.select();
+                copyText.setSelectionRange(0, 99999); // For mobile devices
+                /* Copy the text inside the text field */
+                navigator.clipboard.writeText(copyText.value);
+                /* Alert the copied text */
+                alert("Copied the text: ' " + copyText.value + " '");
+            });
+        });
+        /*-----------------------------------*/
+        /*--------- DARK LIGHT THEME --------*/ 
+        const themeButton = document.getElementById('theme-button');
+        const myLogo = document.getElementById('my-logo');
+
+        const darkTheme = 'dark-theme';
+        const selectedTheme = localStorage.getItem('selected-theme');
+        const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+
+
+if(selectedTheme === 'dark'){
+  document.body.classList.toggle('dark-theme');
+  themeButton.classList.add('bx-sun');
+  themeButton.classList.remove('bx-moon');
+  myLogo.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRknBGBH59LqTyRKom0uvo_o1or_Iq99vMx2l_wG57oKtmOhQP1tyxLrTQSCl7W9NRZa-GGHmmkJLPHV-V6Kd_OrNaiWCVYpgUZ91psnJNthERJc7pvP7aUOv4Lq2bY6Tis4TINe0cpo6th8BGIME4WUmYG_m_gH2F09MTKGo5sghyAXvkvGk5Fw/s1600/seyfeddine-logo-2.webp";
+}
+localStorage.setItem('selected-theme', getCurrentTheme());
+
+themeButton.onclick = function(){
+  if(document.body.classList.contains(darkTheme)){
+    myLogo.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjRknBGBH59LqTyRKom0uvo_o1or_Iq99vMx2l_wG57oKtmOhQP1tyxLrTQSCl7W9NRZa-GGHmmkJLPHV-V6Kd_OrNaiWCVYpgUZ91psnJNthERJc7pvP7aUOv4Lq2bY6Tis4TINe0cpo6th8BGIME4WUmYG_m_gH2F09MTKGo5sghyAXvkvGk5Fw/s1600/seyfeddine-logo-1.webp";
+  } else {
+    myLogo.src = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiR3f8rumCEwaNki733oYuUK23wGJn7zsdz564Yd-PizsKhJPtvSMscH6OfWGiJIqxSWa-URCmsK-cqbc8WsoamzJKF6gh-_7I8waM4UkFiO-zrE5fss2ormIjjJctFukacU37Mjmf0No8fqeaGUWK2qAXStDyRIBpjaMF7MJCvbCAJ0FjlT4tzpg/s1600/seyfeddine-logo-2.webp";
+  }
+  document.body.classList.toggle('dark-theme');
+  themeButton.classList.toggle('bx-sun');
+  themeButton.classList.toggle('bx-moon');
+  localStorage.setItem('selected-theme', getCurrentTheme());
+}
+/*
+        if(selectedTheme === 'dark'){
+          document.body.classList.toggle('dark-theme');
+          themeButton.classList.add('bx-sun');
+          themeButton.classList.remove('bx-moon');
+          myLogo.src = "assets/img/seyfeddine-logo-1.webp";
+        }
+        localStorage.setItem('selected-theme', getCurrentTheme());
+
+        themeButton.onclick = function(){
+          document.body.classList.toggle('dark-theme');
+          themeButton.classList.toggle('bx-sun');
+          themeButton.classList.toggle('bx-moon');
+          if(document.body.classList.contains(darkTheme)){
+            myLogo.src = "assets/img/seyfeddine-logo-1.webp";
+          } else {
+            myLogo.src = "assets/img/seyfeddine-logo-2.webp";
+          }
+          localStorage.setItem('selected-theme', getCurrentTheme());
+        }
+        -----------------------------------*/
+/*--------------------------- SWITCH NUMBERS ----------------------------*/
+function numberSwitch(number) {
+    let n;
+    switch (parseInt(number)) {
+        //units
+        case  0: n = ['zéro',    'zero',   'صفر'   ];   break;
+        case  1: n = ['un',      'one',    'واحد'     ];   break;
+        case  2: n = ['deux',    'two',    'اتنان'   ];   break;
+        case  3: n = ['trois',   'three',  'تلاثة'  ];   break;
+        case  4: n = ['quatre',  'four',   'أربعة'   ];   break;
+        case  5: n = ['cinq',    'five',   'خمسة'   ];   break;
+        case  6: n = ['six',     'six',    'ستة'   ];   break;
+        case  7: n = ['sept',    'seven',  'سبعة'  ];   break;
+        case  8: n = ['huit',    'eight',  'تمانية' ];   break;
+        case  9: n = ['neuf',    'nine',   'تسعة'  ];   break;
+        //tens
+        case 10: n = ['dix',              'Ten',       'عشرة'         ];   break;
+        case 11: n = ['onze',             'eleven',    'أحد عشر'      ];   break;
+        case 12: n = ['douze',            'twelve',    'اثنا عشر'     ];   break;
+        case 13: n = ['treize',           'thirteen',  'ثلاثة عشر'   ];   break;
+        case 14: n = ['quatorze',         'fourteen',  'أربعة عشر'    ];   break;
+        case 15: n = ['quinze',           'fifteen',   'خمسة عشر'    ];   break;
+        case 16: n = ['seize',            'sixteen',   'ستة عشر'    ];   break;
+        case 17: n = ['dix-sept',         'seventeen', 'سبعة عشر'   ];   break;
+        case 18: n = ['dix-huit',         'eighteen',  'ثمانية عشر'  ];   break;
+        case 19: n = ['dix-neuf',         'nineteen',  'تسعة عشر'   ];   break;
+        case 20: n = ['vingt',            'twenty',    'عشرون'       ];   break;
+        case 30: n = ['trente',           'thirty',    'ثلاثون'      ];   break;
+        case 40: n = ['quarante',         'forty',     'أربعون'       ];   break;
+        case 50: n = ['cinquante',        'fifty',     'خمسون'       ];   break;
+        case 60: n = ['soixante',         'sixty',     'ستون'       ];   break;
+        case 70: n = ['soixante-dix',     'seventy',   'سبعون'      ];   break;
+        case 80: n = ['quatre-vingt',     'eighty',    'ثمانون'      ];   break;
+        case 90: n = ['quatre-vingt-dix', 'ninety',    'تسعون'      ];   break;
+    }
+    return n;
+}
+/*------------------------ SWITCH LARGE NUMBERS -------------------------*/
+function largeNumbers(deg) {
+    let d;
+    switch (parseInt(deg)) {
+        case  3: d = ['mille',           'thousand',    'الاف',              ];   break;
+        case  6: d = ['millions',        'million',     'مليون',            ];   break;
+        case  9: d = ['milliards',       'billion',     'مليار',             ];   break;
+        case 12: d = ['billions',        'trillion',    'تريليون',         ];   break;
+        case 15: d = ['mille-billions',  'quadrillion', 'كوادريليون',       ];   break;
+        case 18: d = ['trillion',        'quintillion', 'كوينتليون',      ];   break;
+        case 21: d = ['mille-trillion', 'sextillion',   'سيكستيليون',   ];   break;
+        case 24: d = ['quatrillion',     'septillion',  'سبتليون',        ];   break;
+        default: d = ['', '', '']; 
+    }
+    return d;
+}
+class myNumber {
+  constructor(number) {
+    this.n = number;
+    this.nums;
+    this.words;
+    this.phrase;
+  }
+}
+/*-------------------------- SEPARATE NUMBERS ---------------------------*/
+function getNum(number) {
+    let myNum = new myNumber(number);
+    let nums = [], x = [], fr = [], en = [], ar = [];
+    //var N = number, r, i = 0;
+    // do {
+    //     r = N % 10;
+    //     var a = r;
+    //     nums[i] = r;
+    //     if ((i-1)%3 == 0 && r !== 0) {
+    //         if (r == 1) a = r + '' + nums[i-1];
+    //         else a = r + '0';
+    //     }
+    //     fr[i] = numberSwitch(a)[0];
+    //     en[i] = numberSwitch(a)[1];
+    //     ar[i] = numberSwitch(a)[2];
+    //     N = (N - r)/ 10; 
+    //     i++;
+    // } while (N > 0);
+    var n = '' + number;
+    for (var i = 0, j = n.length - 1; i <= n.length - 1; i++,j--) {
+        var a = n[j];
+        nums[i] = a;
+        if ((i-1)%3 == 0 && a !== 0) {
+            if (a == 1) a += '' + nums[i-1];
+            else a += '0';
+        }
+        a = parseInt(a);
+        fr[i] = numberSwitch(a)[0]; en[i] = numberSwitch(a)[1]; ar[i] = numberSwitch(a)[2];
+    }    
+    myNum.words = {fr, en, ar};
+    myNum.nums = nums;
+    if (nums.length == 1) {ar = myNum.words.ar; fr = myNum.words.fr; en = myNum.words.en;}
+    else ar = convertToArabic(myNum), fr = convertToFrench(myNum), en = convertToEnglish(myNum);
+    myNum.phrase = {ar, fr, en};
+    console.log(myNum)
+    return myNum;
+}
+/*---------------------- CONVERT NUMBERS TO ARABIC ----------------------*/
+function convertToArabic(myNum) {
+    let nums = myNum.nums, words = myNum.words.ar, phrase = '';
+    for (var i = nums.length - 1; i >= 0; i--) {
+        if (i%3 == 0) {
+            if (i == nums.length - 1 && nums[i] != 1 && nums[i] != 0 && nums[i] != 2) phrase += words[i] + ' ';
+            if (i == 3 && nums[i] == 1) phrase += 'الف '; 
+            else if (nums[i+2] != 0||nums[i+1] != 0||nums[i] != 0||i == nums.length - 1) {
+                phrase += largeNumbers(i)[2];
+                if (nums[i] == 2 && i != 0) phrase += 'ان '; else phrase += ' ';
+            }
+        } else if ((i-2)%3 == 0) {
+            if (nums[i] != 0 && i != nums.length - 1) phrase += 'و';
+            if (nums[i] == 1) phrase += 'مائة '; 
+            else if (nums[i] == 2) phrase += 'مئتان '; 
+            else if (nums[i] != 0) phrase += words[i] + ' مائة ';
+        } else if ((i-1)%3 == 0) {
+            var r = nums[i] + '' + nums[i-1] + ' ';
+            if (i != nums.length - 1 && parseInt(r) > 0) phrase += 'و';
+            if (nums[i] == 0 && (nums[i-1] > 1 || (i == 1 && nums[i-1] != 0))) phrase += words[i-1] + ' ';
+            else if (nums[i] == 1) phrase += words[i] + ' ';
+            else if (nums[i] != 0 && nums[i-1] == 0) phrase += words[i] + ' ';
+            else if (nums[i] != 0 && nums[i-1] != 0) phrase += words[i-1] + ' و' + words[i] + ' ';
+        }
+    }
+    return phrase;
+}
+/*--------------------- CONVERT NUMBERS TO ENGLISH ----------------------*/
+function convertToEnglish(myNum) {
+    let nums = myNum.nums, words = myNum.words.en, phrase = '';
+    for (var i = nums.length - 1; i >= 0; i--) {
+        if (i % 3 == 0) {
+            if (i == nums.length - 1) phrase += words[i] + ' ';
+            if (nums[i+2] != 0||nums[i+1] != 0||nums[i] != 0||i == nums.length - 1) phrase += largeNumbers(i)[1] + ' ';
+        } else if ((i-2)%3 == 0 && nums[i] != 0) phrase += words[i] + ' hundred ';
+        else if ((i-1)%3 == 0) {
+            if (nums[i] == 0 && nums[i-1] != 0) phrase += words[i-1] + ' ';
+            else if ((nums[i] != 0 && nums[i-1] == 0)||nums[i] == 1) phrase += words[i] + ' ';
+            else if (nums[i] != 0 && nums[i-1] != 0) phrase += words[i] + '-' + words[i-1] + ' ';
+        }
+    }
+    return phrase;
+}
+/*--------------------- CONVERT NUMBERS TO FRENCH -----------------------*/
+function convertToFrench(myNum) {
+    let nums = myNum.nums, words = myNum.words.fr, phrase = '';
+    for (var i = nums.length - 1; i >= 0; i--) {
+        if (i % 3 == 0) {
+            if (i == nums.length - 1 && nums[i] != 1 && nums[i] != 0) phrase += words[i] + ' ';
+            if (nums[i+2] != 0||nums[i+1] != 0||nums[i] != 0||i == nums.length - 1) phrase += largeNumbers(i)[0] + ' ';
+        } else if ((i-2)%3 == 0 && nums[i] != 0) {
+            if (nums[i] == 1) phrase += 'cents ';
+            else phrase += words[i] + ' cents ';
+        } else if ((i-1)%3 == 0) {
+            if (nums[i] == 0 && (nums[i-1] > 1 || (i == 1 && nums[i-1] != 0))) phrase += words[i-1] + ' ';
+            else if (nums[i] == 1) phrase += words[i] + ' ';
+            else if (nums[i] != 0) {
+                if ((nums[i] == 9 || nums[i] == 7) && nums[i-1] != 0) {
+                    var a = nums[i] - 1 + '0';
+                    var b = '1' + nums[i-1];
+                    words[i] = numberSwitch(a)[0];
+                    words[i-1] = numberSwitch(b)[0];
+                }
+                if (nums[i-1] == 0) phrase += words[i] + ' ';
+                else if (nums[i-1] == 1){ phrase += words[i] + '-et-' + words[i-1] + ' ';}
+                else phrase += words[i] + '-' + words[i-1] + ' ';
+            }
+        }
+    }
+    return phrase;
+}
+/*--------------------- CONVERT NUMBERS TO LETTER -----------------------*/
+function NumberToLetter(number, lang) {
+
+    if (number.toString().replace(/ /gi, "").length > 27)  return "dépassement de capacité";
+    if (isNaN(number.toString().replace(/ /gi, "")))       return "number non valide";
+    //nb = parseFloat(number.toString().replace(/ /gi, ""));
+    //if (Math.ceil(nb) != nb) return  "number avec virgule non géré.";
+    
+    let myNum = getNum(number);
+    if (number == '')  return '';
+    let phrase = myNum.phrase;
+    return phrase;
+}/*--------------------- CONVERT LETTER TO NUMBERS -----------------------*/
+function LetterToNumber(phrase, lang) {
+    var p = phrase.split(' ');
+    let n = [];
+    for (var i = 0, k = 0; i < p.length; i++) {
+      var a =  p[i].split('-');
+      for (var j = 0; j < a.length; j++) {
+        if (a[j]) { 
+          n[k] = a[j];
+          var d = 1;
+          for (var l = 0; l < 100; l += d) {
+            var b = numberSwitch(l)[1];
+            if (a[j] === b) {n[k] = l; break;}
+            if (l == 20) d = 10;
+          } k++;
+        }
+      }
+    }
+    console.log(p,n)
+    var sum = 0, num = 0; 
+    let n1 = [];
+    for (var i = 0, j = 0; i < n.length; i++,j++) {
+      n1[j] = n[i];
+      var s = 1;
+      if (n[i] == 'hundred') {n1[--j] = 100 * n[i-1];sum -= n[i-1];}
+      else {
+        var x = 1;
+        for (var d = 3; d <= 24; d+=3) {
+          b = largeNumbers(d)[1];
+          x *= 1000;
+          if (n[i] === b) { 
+            n1[j] = x * sum;
+            num += n1[j]; 
+            s = 0;
+            sum = 0;
+            break;
+          }
+        }
+      }
+      if (s) sum += n1[j];
+      if (i == n.length - 1) num += sum;
+      console.log(n1[j],sum,num)
+    }
+    console.log(p,n1)
+}
+LetterToNumber('seven billion seven hundred sixty-eight million nine hundred eighty-seven thousand nine hundred eighty-nine')
+// seven billion seven hundred sixty-eight million nine hundred eighty-seven thousand nine hundred eighty-nine  
+// seven billion seven hundred sixty-eight million nine hundred eighty-seven thousand nine hundred eighty-nine
+LetterToNumber('one hundred million thirty thousand thirty-two')
+/*-----------------------------------------------------------------------*/
+
+
+    </script>
+</body>
+</html>
